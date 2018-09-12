@@ -26,7 +26,7 @@ $ docker pull gogs/gogs
 $ mkdir -p /var/gogs
 
 # Use `docker run` for the first time.
-$ docker run --name=gogs -p 10022:22 -p 10080:3000 -v /var/gogs:/data -d gogs:0.11.53
+$ docker run --name=gogs -p 10022:22 -p 10080:3000 -v /var/gogs:/data -d prong/gogs:0.11.53
 
 # Use `docker start` if you have stopped it.
 $ docker start gogs
