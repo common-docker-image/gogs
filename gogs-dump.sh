@@ -27,7 +27,9 @@ function keep_some_newest_files(){
 
 
 # 设置仓库下文件的权限，增加所有者的写权限：
+echo "$(date '+%Y-%m-%d %H:%M:%S') Adding write permission to /data/git/gogs-repositories/" >> $LOG_FILE
 chmod u+w -R /data/git/gogs-repositories/
+echo "$(date '+%Y-%m-%d %H:%M:%S') Add write permission ok." >> $LOG_FILE
 
 # 备份文件名，例如：gogs-backup-20180912150913.zip
 ARCHIVE_NAME=gogs-backup-$(date +%Y%m%d-%H%M%S).zip
@@ -37,7 +39,7 @@ export USER=git
 
 # 开始备份
 cd /app/gogs
-
+echo "$(date '+%Y-%m-%d %H:%M:%S') === Backup start ..." >> $LOG_FILE
 ./gogs backup --target /data/dumps --archive-name $ARCHIVE_NAME >> $LOG_FILE
 # 获得返回码
 status=$?
@@ -48,6 +50,7 @@ if [ $status -ne 0 ]; then
         echo "$(date '+%Y-%m-%d %H:%M:%S') delete dump file: /data/dumps/$ARCHIVE_NAME" >> $LOG_FILE
         rm -f /data/dumps/$ARCHIVE_NAME;
     fi
+    echo "$(date '+%Y-%m-%d %H:%M:%S') === Backup end." >> $LOG_FILE
     exit $status
 fi
 echo "$(date '+%Y-%m-%d %H:%M:%S') Success to dump gogs: $ARCHIVE_NAME" >> $LOG_FILE
@@ -55,6 +58,7 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') Success to dump gogs: $ARCHIVE_NAME" >> $LOG_
 # 保留最新的5个备份
 keep_some_newest_files
 
+echo "$(date '+%Y-%m-%d %H:%M:%S') === Backup end." >> $LOG_FILE
 
 
 
