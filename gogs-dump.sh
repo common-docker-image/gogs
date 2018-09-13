@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_FILE=/data/dumps/gogs-dump.log
+LOG_FILE=/data/gogs-dump.log
 DIR_TEMP=/data/temp
 DIR_DUMPS=/data/dumps
 
