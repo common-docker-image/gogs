@@ -14,13 +14,15 @@
   - 备份日志：
     - 容器内：/data/dumps/gogs-dump.log
 
+> 你可以结合 `rsync` + `inotify`，将备份文件实时复制到备份服务器上。
+
 
 
 ## 使用说明
 
 ```shell
 # Pull image from Docker Hub.
-$ docker pull gogs/gogs
+$ docker pull prong/gogs:0.11.53
 
 # Create local directory for volume.
 $ mkdir -p /var/gogs
