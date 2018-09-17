@@ -1,4 +1,4 @@
-FROM gogs/gogs:0.11.53
+FROM gogs/gogs:0.11.66
 
 MAINTAINER visionken <visionken2017@qq.com>
 
