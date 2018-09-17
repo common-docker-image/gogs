@@ -72,6 +72,9 @@ mv $DIR_TEMP/$ARCHIVE_NAME $DIR_DUMPS
 # 保留最新的5个备份
 keep_some_newest_files
 
+echo "$(date '+%Y-%m-%d %H:%M:%S') chown log to root" >> $LOG_FILE
+chown -R git:git /app/gogs/log/
+
 echo "$(date '+%Y-%m-%d %H:%M:%S') === Backup end." >> $LOG_FILE
 
 
