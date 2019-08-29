@@ -63,6 +63,8 @@ if [ $status -ne 0 ]; then
         echo "$(date '+%Y-%m-%d %H:%M:%S') delete dump file: $DIR_TEMP/$ARCHIVE_NAME" >> $LOG_FILE
         rm -f $DIR_TEMP/$ARCHIVE_NAME;
     fi
+    echo "$(date '+%Y-%m-%d %H:%M:%S') chown log to root" >> $LOG_FILE
+    chown -R git:git /app/gogs/log/
     echo "$(date '+%Y-%m-%d %H:%M:%S') === Backup end." >> $LOG_FILE
     exit $status
 fi
