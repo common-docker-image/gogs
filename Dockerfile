@@ -8,7 +8,8 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     apk -U add findutils && \
     echo "30      0       *       *       *       /app/gogs/gogs-dump.sh" >> /var/spool/cron/crontabs/root
 
-ADD gogs-dump.sh /app/gogs/
+COPY gogs-dump.sh /app/gogs/
+COPY .gitconfig /data/git/
 
 # Add crond to the dockerfile: https://github.com/gogs/gogs/issues/2597
 ENV RUN_CROND=true USER=git
